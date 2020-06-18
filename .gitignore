@@ -1,0 +1,6 @@
+.idea/
+.pytest_cache
+# Ignore compiled Python source files
+__pycache__/
+*.pyc
+.Ds_Store

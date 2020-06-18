@@ -1,0 +1,37 @@
+{% extends "admin/base.html" %}
+{% load i18n admin_urls static admin_modify %}
+
+
+{% block title %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}
+    <div id="user-tools">
+                Welcome,
+                <strong>root</strong>.
+                <a href="/">View site</a>
+                <a href="/admin/password_change/">Change password</a> /
+                <a href="/admin/logout/">Log out</a>
+        </div>
+{% endblock %}
+
+
+{% block breadcrumbs %}
+    <div class="breadcrumbs">
+        <a href="{% url 'admin:index' %}">{% trans 'Home' %}</a>
+        &rsaquo; <a href="/admin/users">Api</a>
+        &rsaquo; <a href="/admin/users/user/">Users</a>
+        > Send mails
+    </div>
+{% endblock %}
+{% block content %}
+    <div id="content-main">
+        <form method="post" action=""> {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="submit">
+        </form>
+    </div>
+{% endblock %}
